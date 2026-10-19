@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Utkarsh Pradhan Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Utkarsh Pradhan — SEO specialist and WordPress/Elementor website designer. SEO audits, keyword research, technical SEO, local SEO and website redesigns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: page reads like a search results page — a query bar, the #1 result, then sections as "result blocks" */
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --ink:#13202B; --muted:#56657A; --line:#DDE3EB;
+  --link:#1846C9; --crumb:#127A4E; --mark:#FFE45C; --mark-ink:#13202B;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E151C; --surface:#151F29; --ink:#E7EDF3; --muted:#97A6B8; --line:#26333F;
+  --link:#8CB0FF; --crumb:#5FD39C; --mark:#E8CC3A; --mark-ink:#0E151C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E151C; --surface:#151F29; --ink:#E7EDF3; --muted:#97A6B8; --line:#26333F;
+  --link:#8CB0FF; --crumb:#5FD39C; --mark:#E8CC3A; --mark-ink:#0E151C; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:980px;margin:0 auto}
+a{color:var(--link)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 .15em;border-radius:2px}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.logo span{color:var(--link)}
+.nav{display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+.nav a{color:var(--muted);text-decoration:none}
+.nav a:hover{color:var(--ink)}
+
+/* hero: search query + #1 result */
+.hero{padding-block:36px 56px;display:grid;gap:28px}
+.query{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:12px 20px;max-width:620px;font-size:16px;color:var(--ink)}
+.query svg{flex:none}
+.query .typed{font-family:var(--body);min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.query .caret{width:2px;height:20px;background:var(--link);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.stats{font-size:13px;color:var(--muted);margin-top:-14px;padding-left:20px}
+.result{max-width:720px;display:grid;gap:6px}
+.crumb{font-family:var(--mono);font-size:13px;color:var(--crumb);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rank{font-family:var(--mono);font-size:12px;background:var(--mark);color:var(--mark-ink);padding:1px 8px;border-radius:4px;font-weight:500}
+.result h1{font-size:clamp(40px,7vw,76px);font-weight:800;letter-spacing:-.025em;color:var(--link)}
+.result h1 small{display:block;font-size:.42em;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin-top:10px}
+.snippet{color:var(--muted);max-width:62ch;font-size:18px;margin:6px 0 0}
+.sitelinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;
+  text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--link);border-color:var(--link);color:var(--bg)}
+.btn:hover{border-color:var(--link)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--crumb);margin-bottom:10px}
+section h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.02em;margin-bottom:28px;max-width:22ch}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.svc{background:var(--surface);padding:24px;display:grid;gap:8px;align-content:start}
+.svc h3{font-size:20px;font-weight:700}
+.svc p{margin:0;color:var(--muted);font-size:15.5px}
+.svc .kw{font-family:var(--mono);font-size:12px;color:var(--crumb)}
+
+.work{display:grid;gap:0}
+.job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding-block:18px;border-bottom:1px solid var(--line)}
+.job:first-child{padding-top:0}
+.job .crumb{grid-column:1/-1}
+.job h3{font-size:21px;font-weight:700;color:var(--link)}
+.job p{margin:0;color:var(--muted);font-size:15.5px;grid-column:1}
+.job .tag{grid-column:2;grid-row:2/4;align-self:center;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 12px;white-space:nowrap}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:20px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:6px}
+.steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:34px;color:var(--link);line-height:1}
+.steps b{font-family:var(--display);font-size:18px}
+.steps span{color:var(--muted);font-size:15px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px}
+.tools span{font-family:var(--mono);font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 12px}
+
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:10px}
+.card .lbl{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.card .val{font-family:var(--display);font-size:clamp(18px,2.6vw,24px);font-weight:700;word-break:break-word;user-select:all}
+.card .row{display:flex;gap:10px;flex-wrap:wrap}
+footer{padding-block:32px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.copied{font-size:13px;color:var(--crumb);min-height:1em}
+
+@media (max-width:560px){.job{grid-template-columns:1fr}.job .tag{grid-column:1;grid-row:auto;justify-self:start}}
+@media (prefers-reduced-motion:reduce){.query .caret{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">utkarsh<span>.</span>seo</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="top">
+    <div class="query" aria-label="Search query">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <span class="typed">seo expert who also builds the website</span><span class="caret" aria-hidden="true"></span>
+    </div>
+    <div class="stats">About 1 result that does both</div>
+    <article class="result">
+      <div class="crumb"><span class="rank">#1</span> utkarshpradhan-web.github.io › seo › web-design</div>
+      <h1>Utkarsh Pradhan<small>SEO specialist &amp; WordPress website designer</small></h1>
+      <p class="snippet">I find out why a site isn't ranking, then fix it on the site myself. <mark>Audits, keyword research, technical and local SEO</mark>, content, backlinks and Elementor Pro redesigns for clinics, real estate, NGOs, schools and growing brands in India, Dubai and the UK.</p>
+      <div class="sitelinks">
+        <a class="btn primary" href="#contact">Get a free SEO audit</a>
+        <a class="btn" href="#work">See client work</a>
+      </div>
+    </article>
+  </div>
+
+  <section id="services">
+    <div class="eyebrow">What I handle</div>
+    <h2>SEO and the website it runs on</h2>
+    <div class="services">
+      <div class="svc"><span class="kw">audit · crawl · report</span><h3>SEO audits</h3><p>Broken links, duplicate content, speed and mobile issues, delivered as a clear PDF or PPT report your team can act on.</p></div>
+      <div class="svc"><span class="kw">volume · intent · mapping</span><h3>Keyword research</h3><p>High-intent and local keywords with volume and difficulty, mapped to the page that should rank for each.</p></div>
+      <div class="svc"><span class="kw">meta · headings · links</span><h3>On-page SEO</h3><p>Titles, descriptions, heading structure, internal linking and content optimisation in Rank Math or Yoast.</p></div>
+      <div class="svc"><span class="kw">speed · schema · indexing</span><h3>Technical SEO</h3><p>Core Web Vitals, sitemaps, robots.txt, schema markup, redirects and indexing fixes.</p></div>
+      <div class="svc"><span class="kw">gbp · citations · nap</span><h3>Local SEO</h3><p>Google Business Profile, local citations and location pages for clinics and service businesses.</p></div>
+      <div class="svc"><span class="kw">outreach · gap analysis</span><h3>Backlinks &amp; content</h3><p>Backlink research and outreach, SEO blog writing and publishing, and content calendars.</p></div>
+      <div class="svc"><span class="kw">wordpress · elementor pro</span><h3>Website design</h3><p>Homepage and full-site redesigns built SEO-friendly from the first section.</p></div>
+      <div class="svc"><span class="kw">metricool · instagram</span><h3>Social media</h3><p>Content planning, creatives, captions and scheduled posting.</p></div>
+      <div class="svc"><span class="kw">keywords · rsa copy</span><h3>Google Ads support</h3><p>Campaign keyword research and responsive search ad copy.</p></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="eyebrow">Selected work</div>
+    <h2>Recent clients</h2>
+    <div class="work">
+      <div class="job"><div class="crumb">zyrax.in</div><h3>Zyrax Fitness</h3><p>Website design and SEO for an online fitness brand.</p><span class="tag">Fitness</span></div>
+      <div class="job"><div class="crumb">zylo.in</div><h3>Zylo</h3><p>Website and SEO for an online Zumba programme for women.</p><span class="tag">Fitness</span></div>
+      <div class="job"><div class="crumb">topsmiledentalclinic.com</div><h3>Top Smile Dental Clinic, Dubai</h3><p>SEO and digital marketing engagement.</p><span class="tag">Healthcare</span></div>
+      <div class="job"><div class="crumb">beyondsmiles.in</div><h3>Beyond Smiles Dental Care</h3><p>Homepage redesign for a clinic in Mumbai, Goa and the UK.</p><span class="tag">Healthcare</span></div>
+      <div class="job"><div class="crumb">aavonproperties.com · dubaisalecentre.com · offplanpropertyfinder.ae</div><h3>Dubai real estate</h3><p>Homepage design, CSS work and WordPress automation for off-plan property sites.</p><span class="tag">Real estate</span></div>
+      <div class="job"><div class="crumb">addtodigital.com</div><h3>AddToDigital</h3><p>Full site audit with a critical bug report, then an Elementor Pro redesign.</p><span class="tag">Agency</span></div>
+      <div class="job"><div class="crumb">aflix.co.in</div><h3>Aflix Infotech</h3><p>Social content and local SEO for an AI automation and SaaS company.</p><span class="tag">IT / SaaS</span></div>
+      <div class="job"><div class="crumb">gurukuluk.org · namasteybharat.com</div><h3>Gurukul UK &amp; Namastey Bharat</h3><p>Website analysis, client reports and redesigns for culture and literature sites.</p><span class="tag">Education</span></div>
+      <div class="job"><div class="crumb">holisticwell-beingsolutions.com · beyondsmilesfoundation.org</div><h3>Wellbeing &amp; NGO sites</h3><p>Site audits and Elementor Pro homepage redesigns.</p><span class="tag">Non-profit</span></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="eyebrow">How a project runs</div>
+    <h2>From audit to monthly report</h2>
+    <ol class="steps">
+      <li><b>Audit</b><span>Find what's holding the site back.</span></li>
+      <li><b>Research</b><span>Keywords and competitors.</span></li>
+      <li><b>Fix</b><span>On-page and technical changes.</span></li>
+      <li><b>Publish</b><span>Content and backlinks.</span></li>
+      <li><b>Report</b><span>Rankings and traffic, monthly.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="eyebrow">Toolkit</div>
+    <h2>Tools I work in</h2>
+    <div class="tools">
+      <span>Google Search Console</span><span>Google Analytics</span><span>Ubersuggest</span><span>Rank Math</span><span>Yoast SEO</span><span>PageSpeed Insights</span><span>WordPress</span><span>Elementor Pro</span><span>HTML / CSS</span><span>Python</span><span>Metricool</span><span>Google Ads</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="eyebrow">Contact</div>
+    <h2>Send me your website. I'll tell you what's stopping it from ranking.</h2>
+    <div class="contact">
+      <div class="card"><span class="lbl">Email</span><span class="val" id="email">pradhan.utkarsh96@gmail.com</span>
+        <div class="row"><button class="btn" type="button" data-copy="pradhan.utkarsh96@gmail.com">Copy email</button><a class="btn" href="mailto:pradhan.utkarsh96@gmail.com">Write email</a></div></div>
+      <div class="card"><span class="lbl">Phone / WhatsApp</span><span class="val">+91 90266 29472</span>
+        <div class="row"><button class="btn" type="button" data-copy="+919026629472">Copy number</button><a class="btn" href="https://wa.me/919026629472" target="_blank" rel="noopener">Open WhatsApp</a></div></div>
+    </div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+  </section>
+
+  <footer>© 2026 Utkarsh Pradhan · SEO &amp; website design</footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy'),out=document.getElementById('copied');
+    var done=function(){out.textContent='Copied '+t;};
+    try{navigator.clipboard.writeText(t).then(done,function(){out.textContent='Select the text above to copy it';});}
+    catch(e){out.textContent='Select the text above to copy it';}
+  });
+});
+</script>
+</body>
+</html>
